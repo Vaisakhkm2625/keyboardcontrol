@@ -17,3 +17,6 @@ https://realpython.com/python-toml/
 
 https://github.com/baskerville/sxhkd
 https://pypi.org/project/sxhkd-parser/
+
+
+https://learn.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-setfocus
