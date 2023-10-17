@@ -8,8 +8,9 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.10"
-PyQt5 = "^5.15.9"
 pyyaml = "^6.0.1"
+xremap = "^0.1.0"
+pyqt6-tools = "^6.4.2.3.3"
 
 
 [build-system]
