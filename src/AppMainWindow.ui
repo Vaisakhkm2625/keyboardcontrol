@@ -21,10 +21,19 @@
        <item>
         <widget class="QWidget" name="widget" native="true">
          <layout class="QHBoxLayout" name="horizontalLayout">
+          <property name="leftMargin">
+           <number>0</number>
+          </property>
+          <property name="topMargin">
+           <number>0</number>
+          </property>
           <item>
-           <widget class="QLabel" name="icon_toggle_sidebar">
+           <widget class="QPushButton" name="pushButton">
             <property name="text">
-             <string>TextLabel</string>
+             <string>x</string>
+            </property>
+            <property name="icon">
+             <iconset theme="accessories-calculator"/>
             </property>
            </widget>
           </item>
@@ -71,13 +80,6 @@
      <widget class="QWidget" name="sidebar_widget" native="true">
       <layout class="QVBoxLayout" name="verticalLayout_2">
        <item>
-        <widget class="QPushButton" name="pushButton">
-         <property name="text">
-          <string>PushButton</string>
-         </property>
-        </widget>
-       </item>
-       <item>
         <widget class="QScrollArea" name="scrollArea">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Maximum" vsizetype="Expanding">
@@ -93,8 +95,8 @@
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>98</width>
-            <height>551</height>
+            <width>92</width>
+            <height>579</height>
            </rect>
           </property>
           <property name="sizePolicy">
@@ -104,6 +106,42 @@
            </sizepolicy>
           </property>
           <layout class="QVBoxLayout" name="verticalLayout_3">
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout_2">
+             <item>
+              <widget class="QLabel" name="appicon">
+               <property name="minimumSize">
+                <size>
+                 <width>4</width>
+                 <height>0</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>20</width>
+                 <height>20</height>
+                </size>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+               <property name="pixmap">
+                <pixmap resource="resources.qrc">:/icons/icons/keyboard.png</pixmap>
+               </property>
+               <property name="scaledContents">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="appname">
+               <property name="text">
+                <string>appname</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
            <item>
             <widget class="QPushButton" name="addkeymap">
              <property name="text">
@@ -164,6 +202,8 @@
    </property>
   </action>
  </widget>
- <resources/>
+ <resources>
+  <include location="resources.qrc"/>
+ </resources>
  <connections/>
 </ui>

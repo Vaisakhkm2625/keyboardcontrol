@@ -1,0 +1,6 @@
+<RCC>
+  <qresource prefix="icons/">
+    <file>icons/keyboard.png</file>
+    <file>icons/menu-2.png</file>
+  </qresource>
+</RCC>

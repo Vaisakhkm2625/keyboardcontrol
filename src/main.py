@@ -1,5 +1,5 @@
 import sys
-from PyQt6.QtWidgets import QApplication,QMainWindow
+from PyQt6.QtWidgets import QApplication,QMainWindow, QTreeWidget
 
 
 class MainWindow(QMainWindow):
@@ -8,6 +8,8 @@ class MainWindow(QMainWindow):
 
         self.setWindowTitle("keyboard")
 
+        treew = QTreeWidget(self)
+        treex = QTreeWidget(treew)
 
 
 
