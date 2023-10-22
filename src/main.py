@@ -1,10 +1,22 @@
 import sys
 from PyQt6.QtWidgets import QApplication,QMainWindow, QTreeWidget
 
+from AppMainWindow import Ui_MainWindow
+
+
+class Application(QApplication):
+
+    def __init__(self, argv):
+        super().__init__(argv)
+
+        window = MainWindow()
+        window.show()
+
 
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
+
 
         self.setWindowTitle("keyboard")
 
@@ -13,12 +25,6 @@ class MainWindow(QMainWindow):
 
 
 
-
-
-app = QApplication(sys.argv)
-
-window = MainWindow()
-window.show()
-
-sys.exit(app.exec())
-
+if __name__ == "__main__":
+    app = Application(sys.argv)
+    sys.exit(app.exec())
