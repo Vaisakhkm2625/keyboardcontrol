@@ -43,7 +43,6 @@ class Widget(QWidget):
 
         self.main_layout = QHBoxLayout()
 
-
         tree = QTreeWidget()
         tree.setColumnCount(1)
         tree.itemClicked.connect(self.printDetails)
