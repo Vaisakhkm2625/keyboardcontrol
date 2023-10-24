@@ -9,14 +9,25 @@ from sidebar2 import ConfigTreeView
 class Config():
     def __init__(self):
 
-        self.config_path = "/home/vaisakh/.config/keyboardcontrol/default.yml"
+        configLocation = QStandardPaths.writableLocation(QStandardPaths.StandardLocation.ConfigLocation)
+        self.userConfigPath = configLocation+"/keyboardcontrol"
+        #override
+        self.userConfigPath = "/home/vaisakh/vaisakhRoot/programming/python/keyboardcontrol/config/"
 
+        self.currentConfigPath="";
+        self.config = {}
+        print(self.userConfigPath)
 
-        with open(self.config_path) as file:
-            self.config = yaml.safe_load(file)
 
         self.os=sys.platform
         self.platform="hyprland"
+
+    def setCurrentConfig(self,path):
+        self.currentConfigPath = path
+        with open(self.currentConfigPath) as file:
+            self.config = yaml.safe_load(file)
+            print(self.config)
+
 
 
 # TODO: connect with signels and slots and make this local variable
@@ -42,19 +53,16 @@ class MainWindow(QMainWindow):
 
         self.setWindowTitle("keyboard")
 
-        configLocation = QStandardPaths.writableLocation(QStandardPaths.StandardLocation.ConfigLocation)
-        userConfigLocation = configLocation+"/keyboardcontrol"
-        #override
-        userConfigLocation = "/home/vaisakh/vaisakhRoot/programming/python/keyboardcontrol/config/"
-        print(userConfigLocation)
-
-        self.configTreeView = ConfigTreeView(userConfigLocation)
+        self.configTreeView = ConfigTreeView(configuration.userConfigPath)
 
         layout = QHBoxLayout(self.ui.filetree_wrapper)
         layout.addWidget(self.configTreeView)
 
+        self.configTreeView.fileClicked.connect(self.setBodyItem)
 
-        self.configTreeView.configClicked(self.setBodyItem)
+        self.itempropertybody = ItemPropertyUi(self.ui)
+
+
 
         #self.sidenav = SideNav(self.ui.treeWidget)
 
@@ -69,40 +77,61 @@ class MainWindow(QMainWindow):
 
         #self.show()
 
-    def setBodyItem(self,sideNavTreeItem):
-        print(sideNavTreeItem)
+    def setBodyItem(self,filepath):
+        print("setBodyItem",filepath)
+        configuration.setCurrentConfig(filepath)
+        self.itempropertybody.setValuesUi()
 
 
 
-class ItemViewer():
-    def __init__(self,ui,page,action):
 
+
+
+
+class ItemPropertyUi():
+
+    def __init__(self,ui):
+
+        self.configPath = ""
         self.ui = ui
-        self.page = page
-        self.action = action
 
         #self.setValues("");
 
-    def setAction(self,action):
-        self.action = action
-
-    def setValuesUi(self,action):
+    def setValuesUi(self):
         self.setDescUi()
         self.setNameUi()
         self.setKeybinding()
 
+    def getValuesUi(self):
+        self.getDescUi()
+        self.getNameUi()
+        self.getKeybinding()
+
     def setDescUi(self):
-        desc = configuration.config[self.page]["actions"][self.action]["desc"]
+        desc = configuration.config["desc"]
         self.ui.desc.setText(desc)
 
     def setNameUi(self):
-        name = configuration.config[self.page]["actions"][self.action]["name"]
+        name = configuration.config["name"]
         self.ui.name.setText(name)
 
     def setKeybinding(self):
     #self.ui.name.setText(configuration.config[self.page]["actions"][action]["name"])
-        self.ui.keySequence.setKeySequence("Ctrl+P")
+        keybinding = configuration.config["keybinding"]
+        self.ui.keySequence.setKeySequence(keybinding)
 
+    def getDescUi(self):
+        configuration.config["desc"] = self.ui.desc.text
+
+    def getNameUi(self):
+        name = configuration.config["name"] = self.ui.desc.text
+        self.ui.name.setText(name)
+
+    def getKeybinding(self):
+    #self.ui.name.setText(configuration.config[self.page]["actions"][action]["name"])
+    #   keybinding = configuration.config["keybinding"]
+    #   self.ui.keySequence.setKeySequence(keybinding)
+        return "Ctrl+Shift+j"
 
 
 

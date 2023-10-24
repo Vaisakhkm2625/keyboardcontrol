@@ -63,14 +63,14 @@ class ConfigTreeView(QWidget):
         for i in range(1, self.treeview.model().columnCount()):
             self.treeview.header().hideSection(i)
 
-        self.treeview.clicked.connect(self.configClicked)
+        self.treeview.clicked.connect(self._configClicked)
 
         layout = QHBoxLayout()
         layout.addWidget(self.treeview)
         self.setLayout(layout)
 
 
-    def configClicked(self, index):
+    def _configClicked(self, index):
         model = self.treeview.sender().model()
         if(not model.isDir(index)):
             path = model.filePath(index)
