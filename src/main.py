@@ -20,14 +20,15 @@ class Config():
         #print(self.userConfigPath)
 
         self.os=sys.platform
+        self.selectedOs=sys.platform
         self.platform="hyprland"
+        self.selectedPlatform="hyprland"
 
     def setCurrentConfig(self,path):
         self.currentConfigPath = path
         with open(self.currentConfigPath) as file:
             self.config = yaml.safe_load(file)
             #print(self.config)
-
 
 # TODO: connect with signels and slots and make this local variable
 configuration = Config()
@@ -45,6 +46,8 @@ class Application(QApplication):
 class MainWindow(QMainWindow):
 
     edit_signel = pyqtSignal()
+    #os_selection_selection_changed = pyqtSignal()
+    #platform_selection_selection_changed = pyqtSignal()
 
     def __init__(self):
         super().__init__()
@@ -55,27 +58,28 @@ class MainWindow(QMainWindow):
         self.setWindowTitle("keyboard")
 
         self.configTreeView = ConfigTreeView(configuration.userConfigPath)
-
         layout = QHBoxLayout(self.ui.filetree_wrapper)
         layout.addWidget(self.configTreeView)
-
         self.configTreeView.fileClicked.connect(self.setBodyItem)
 
-        self.itempropertybody = ItemPropertyUi(self.ui)
+        #self.itempropertybody = ItemPropertyUi(self.ui)
         self.ui.edit_properties_button.clicked.connect(self.editProperies)
 
-
-    def refreshUi(self,config):
-        configuration = config
-        print(configuration)
-        print(configuration.config)
-        self.itempropertybody.setValuesUi()
+        self.ui.os_combobox.activated.connect(self.onOSComboboxChanged)
+        self.ui.platform_combobox.activated.connect(self.onPlatformComboboxChanged)
 
 
     def setBodyItem(self,filepath):
         print("setBodyItem",filepath)
         configuration.setCurrentConfig(filepath)
-        self.itempropertybody.setValuesUi()
+        self.setValuesUi()
+
+    def refreshUi(self,config):
+        configuration = config
+        print(configuration)
+        print(configuration.config)
+        self.setValuesUi()
+
 
     def editProperies(self):
         #print(configuration.config)
@@ -83,20 +87,12 @@ class MainWindow(QMainWindow):
         self.editwindow.show()
         self.editwindow.submitted.connect(self.refreshUi)
 
-
-class ItemPropertyUi():
-
-    def __init__(self,ui):
-
-        self.configPath = ""
-        self.ui = ui
-
-        #self.setValues("");
-
     def setValuesUi(self):
         self.setDescUi()
         self.setNameUi()
         self.setKeybinding()
+        self.setOSCombobox()
+        self.setPlatformCombobox()
 
     #def getValuesUi(self):
         #self.getDescUi()
@@ -117,6 +113,60 @@ class ItemPropertyUi():
 
     def getKeybinding(self):
         configuration.config["keybinding"] = self.ui.keybinding.keySequence().toString()
+        
+    def setOSCombobox(self):
+        osList = list(configuration.config["supported_os"])
+        self.ui.os_combobox.clear()
+        self.ui.os_combobox.addItems(osList)
+        # potential event-callback recurrsion
+        configuration.selectedOs = configuration.os
+        configuration.selectedPlatform = configuration.platform
+        if configuration.os in osList:
+            self.ui.os_combobox.setCurrentIndex(osList.index(configuration.os))
+        else:
+            self.ui.os_combobox.setPlaceholderText("os not supported")
+            self.ui.os_combobox.setCurrentIndex(-1)
+
+    def changeOSComboboxSelection(self):
+        configuration.selectedOs = self.ui.os_combobox.currentText()
+
+    def setPlatformCombobox(self):
+        self.ui.platform_combobox.clear()
+        if configuration.selectedOs in list(configuration.config["supported_os"]):
+            platformsList = list(configuration.config["supported_os"][configuration.selectedOs])
+            self.ui.platform_combobox.addItems(platformsList)
+            if configuration.selectedPlatform in platformsList:
+                self.ui.platform_combobox.setCurrentIndex(platformsList.index(configuration.selectedPlatform))
+            else:
+                self.ui.platform_combobox.setPlaceholderText("platform supported")
+                self.ui.platform_combobox.setCurrentIndex(-1)
+        else:
+            self.ui.platform_combobox.setPlaceholderText("os not supported")
+            self.ui.platform_combobox.setCurrentIndex(-1)
+
+    def changePlatformComboboxSelection(self):
+        platformsList = list(configuration.config["supported_os"][configuration.selectedOs])
+        configuration.selectedPlatform = platformsList[0]
+        self.setPlatformCombobox()
+
+
+    def getOSComboboxSelection(self):
+        configuration.selectedOs = self.ui.os_combobox.currentText()
+        #addItems(list(configuration.config["supported_os"]))
+
+    def getPlatformComboboxSelection(self):
+        configuration.platform = self.ui.os_combobox.currentText()
+        #addItems(list(configuration.config["supported_os"]))
+
+    def onOSComboboxChanged(self):
+        print("OSComboboxChanged")
+        self.getOSComboboxSelection()
+        self.changePlatformComboboxSelection()
+
+    def onPlatformComboboxChanged(self):
+        print("PlatformComboboxChanged")
+        configuration.selectedPlatform= self.ui.platform_combobox.currentText()
+        self.setValuesUi
 
 
 
