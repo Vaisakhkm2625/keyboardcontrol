@@ -19,7 +19,6 @@ class Config():
         self.config = {}
         #print(self.userConfigPath)
 
-
         self.os=sys.platform
         self.platform="hyprland"
 
@@ -63,8 +62,15 @@ class MainWindow(QMainWindow):
         self.configTreeView.fileClicked.connect(self.setBodyItem)
 
         self.itempropertybody = ItemPropertyUi(self.ui)
-
         self.ui.edit_properties_button.clicked.connect(self.editProperies)
+
+
+    def refreshUi(self,config):
+        configuration = config
+        print(configuration)
+        print(configuration.config)
+        self.itempropertybody.setValuesUi()
+
 
     def setBodyItem(self,filepath):
         print("setBodyItem",filepath)
@@ -75,6 +81,7 @@ class MainWindow(QMainWindow):
         #print(configuration.config)
         self.editwindow = EditPropertyWindow(configuration) 
         self.editwindow.show()
+        self.editwindow.submitted.connect(self.refreshUi)
 
 
 class ItemPropertyUi():
@@ -91,10 +98,10 @@ class ItemPropertyUi():
         self.setNameUi()
         self.setKeybinding()
 
-    def getValuesUi(self):
-        self.getDescUi()
-        self.getNameUi()
-        self.getKeybinding()
+    #def getValuesUi(self):
+        #self.getDescUi()
+        #self.getNameUi()
+        #self.getKeybinding()
 
     def setDescUi(self):
         desc = configuration.config["desc"]
@@ -105,24 +112,20 @@ class ItemPropertyUi():
         self.ui.name.setText(name)
 
     def setKeybinding(self):
-    #self.ui.name.setText(configuration.config[self.page]["actions"][action]["name"])
         keybinding = configuration.config["keybinding"]
-        self.ui.keySequence.setKeySequence(keybinding)
-
-    def getDescUi(self):
-        configuration.config["desc"] = self.ui.desc.text
-
-    def getNameUi(self):
-        name = configuration.config["name"] = self.ui.desc.text
-        self.ui.name.setText(name)
+        self.ui.keybinding.setKeySequence(keybinding)
 
     def getKeybinding(self):
-    #self.ui.name.setText(configuration.config[self.page]["actions"][action]["name"])
-    #   keybinding = configuration.config["keybinding"]
-    #   self.ui.keySequence.setKeySequence(keybinding)
-        return "Ctrl+Shift+j"
+        configuration.config["keybinding"] = self.ui.keybinding.keySequence().toString()
 
 
+
+    # def getDescUi(self):
+    #     configuration.config["desc"] = self.ui.desc.text
+    #
+    # def getNameUi(self):
+    #     name = configuration.config["name"] = self.ui.desc.text
+    #     self.ui.name.setText(name)
 
 
 
