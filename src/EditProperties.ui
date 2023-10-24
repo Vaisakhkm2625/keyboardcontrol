@@ -36,13 +36,14 @@
     </widget>
    </item>
    <item row="0" column="1">
-    <widget class="QLineEdit" name="lineEdit"/>
+    <widget class="QLineEdit" name="name_edit">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+    </widget>
    </item>
    <item row="1" column="1">
     <widget class="QLineEdit" name="desc_edit"/>
-   </item>
-   <item row="2" column="1">
-    <widget class="QLineEdit" name="keybinding_edit"/>
    </item>
    <item row="3" column="1">
     <widget class="QLineEdit" name="cmd_edit"/>
@@ -87,6 +88,9 @@
       <string>script path</string>
      </property>
     </widget>
+   </item>
+   <item row="2" column="1">
+    <widget class="QKeySequenceEdit" name="keybinding_edit"/>
    </item>
   </layout>
  </widget>

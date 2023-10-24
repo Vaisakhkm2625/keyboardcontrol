@@ -17,7 +17,7 @@ class Config():
 
         self.currentConfigPath="";
         self.config = {}
-        print(self.userConfigPath)
+        #print(self.userConfigPath)
 
 
         self.os=sys.platform
@@ -27,7 +27,7 @@ class Config():
         self.currentConfigPath = path
         with open(self.currentConfigPath) as file:
             self.config = yaml.safe_load(file)
-            print(self.config)
+            #print(self.config)
 
 
 # TODO: connect with signels and slots and make this local variable
@@ -66,18 +66,15 @@ class MainWindow(QMainWindow):
 
         self.ui.edit_properties_button.clicked.connect(self.editProperies)
 
-
-
     def setBodyItem(self,filepath):
         print("setBodyItem",filepath)
         configuration.setCurrentConfig(filepath)
         self.itempropertybody.setValuesUi()
 
     def editProperies(self):
-        print("hello")
-
-        self.editiwindow = EditPropertyWindow() 
-        self.editiwindow.show()
+        #print(configuration.config)
+        self.editwindow = EditPropertyWindow(configuration) 
+        self.editwindow.show()
 
 
 class ItemPropertyUi():
