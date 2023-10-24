@@ -1,7 +1,9 @@
 import sys,yaml
-from PyQt6.QtWidgets import QApplication,QMainWindow, QWidget
+from PyQt6.QtCore import QStandardPaths
+from PyQt6.QtWidgets import QApplication, QHBoxLayout,QMainWindow, QWidget
 
 from AppMainUi import Ui_MainWindow
+from sidebar2 import ConfigTreeView
 
 
 class Config():
@@ -40,10 +42,23 @@ class MainWindow(QMainWindow):
 
         self.setWindowTitle("keyboard")
 
+        configLocation = QStandardPaths.writableLocation(QStandardPaths.StandardLocation.ConfigLocation)
+        userConfigLocation = configLocation+"/keyboardcontrol"
+        #override
+        userConfigLocation = "/home/vaisakh/vaisakhRoot/programming/python/keyboardcontrol/config/"
+        print(userConfigLocation)
+
+        self.configTreeView = ConfigTreeView(userConfigLocation)
+
+        layout = QHBoxLayout(self.ui.filetree_wrapper)
+        layout.addWidget(self.configTreeView)
+
+
+        self.configTreeView.configClicked(self.setBodyItem)
 
         #self.sidenav = SideNav(self.ui.treeWidget)
 
-        self.ui.treeWidget.clicked.connect(self.setBodyItem)
+        #self.ui.treeWidget.clicked.connect(self.setBodyItem)
 
         #self.itemViewer = ItemViewer(self.ui,"general","screenshot")
         #self.itemViewer.setValuesUi("screenshot")

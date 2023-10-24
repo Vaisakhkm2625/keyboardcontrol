@@ -1,8 +1,7 @@
 import sys
 from PyQt6.QtGui import QFileSystemModel, QPointingDeviceUniqueId
-from PyQt6.QtWidgets import QApplication, QHBoxLayout, QStyledItemDelegate, QTreeView, QWidget,QHBoxLayout
-from PyQt6.QtCore import QDir, QStandardPaths,QModelIndex, Qt
-from typing import Type
+from PyQt6.QtWidgets import QApplication, QHBoxLayout, QLabel, QPushButton, QStyledItemDelegate, QTreeView, QWidget,QHBoxLayout
+from PyQt6.QtCore import QDir, QStandardPaths,QModelIndex, Qt, pyqtSignal
 
 class FileSystemModel(QFileSystemModel):
 
@@ -44,6 +43,40 @@ class NameDelegate(QStyledItemDelegate):
                 super().setModelData(editor, model.index)
 
 
+class ConfigTreeView(QWidget):
+
+    fileClicked = pyqtSignal(str)
+
+    def __init__(self,userConfigLocation):
+        super().__init__()
+
+        self.model = QFileSystemModel()
+        #self.model = FileSystemModel()
+        self.model.setRootPath(QDir.rootPath())
+        self.model.setReadOnly(False)        
+
+        self.treeview = QTreeView()
+
+        self.treeview.setModel(self.model)
+        self.treeview.setRootIndex(self.model.index(userConfigLocation))
+        self.treeview.setItemDelegate(NameDelegate(self))
+        for i in range(1, self.treeview.model().columnCount()):
+            self.treeview.header().hideSection(i)
+
+        self.treeview.clicked.connect(self.configClicked)
+
+        layout = QHBoxLayout()
+        layout.addWidget(self.treeview)
+        self.setLayout(layout)
+
+
+    def configClicked(self, index):
+        model = self.treeview.sender().model()
+        if(not model.isDir(index)):
+            path = model.filePath(index)
+            print(path)
+
+            self.fileClicked.emit(path)
 
 
 class Window(QWidget):
@@ -58,27 +91,23 @@ class Window(QWidget):
         print(configLocation)
 
 
-        #self.model = QFileSystemModel()
-        self.model = FileSystemModel()
-        self.model.setRootPath(QDir.rootPath())
-        self.model.setReadOnly(False)        
-
-        self.treeview = QTreeView()
-        self.treeview.setModel(self.model)
-        self.treeview.setRootIndex(self.model.index(userConfigLocation))
-        self.treeview.setItemDelegate(NameDelegate(self.treeview))
-        for i in range(1, self.treeview.model().columnCount()):
-            self.treeview.header().hideSection(i)
-
+        self.configTreeView= ConfigTreeView(userConfigLocation)
         layout = QHBoxLayout()
 
-        layout.addWidget(self.treeview)
+        layout.addWidget(self.configTreeView)
+        label = QLabel("hello")
+        layout.addWidget(label)
+
+        self.configTreeView
+
         self.setLayout(layout)
 
 
 
-app = QApplication(sys.argv)
+if __name__ == "__main__":
 
-window = Window()
-window.show()
-sys.exit(app.exec())
+    app = QApplication(sys.argv)
+
+    window = Window()
+    window.show()
+    sys.exit(app.exec())
