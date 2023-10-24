@@ -1,5 +1,5 @@
 import sys,yaml
-from PyQt6.QtWidgets import QApplication,QMainWindow, QTreeWidget, QTreeWidgetItem, QWidget
+from PyQt6.QtWidgets import QApplication,QMainWindow, QWidget
 
 from AppMainUi import Ui_MainWindow
 
@@ -41,7 +41,7 @@ class MainWindow(QMainWindow):
         self.setWindowTitle("keyboard")
 
 
-        self.sidenav = SideNav(self.ui.treeWidget)
+        #self.sidenav = SideNav(self.ui.treeWidget)
 
         self.ui.treeWidget.clicked.connect(self.setBodyItem)
 
@@ -59,40 +59,40 @@ class MainWindow(QMainWindow):
 
 
 
-class SideNavTreeItem(QTreeWidgetItem):
-    def __init__(self,tree,key):
-        super().__init__(tree)
+# class SideNavTreeItem(QTreeWidgetItem):
+#     def __init__(self,tree,key):
+#         super().__init__(tree)
+#
+#         self.key = key;
+#
 
-        self.key = key;
-
-
-class SideNav(QWidget):
-    def __init__(self,parent):
-        super().__init__()
-
-
-        #print(configuration.config)
-        self.side_nav_tree = parent
-
-        self.setTree("general")
-        self.setTree("applications")
-
-        # general = SideNavTreeItem(side_nav_tree,"general")
-        # general.setText(0,"General utilities")
-
-        # for k,v in config["general"].items():
-        #     generalAction= SideNavTreeItem(general,k)
-        #     generalAction.setText(0,v["name"])
-
-
-    def setTree(self,item_key):
-
-        item = SideNavTreeItem(self.side_nav_tree,item_key)
-        item.setText(0,configuration.config[item_key]["name"])
-
-        for k,v in configuration.config[item_key]["actions"].items():
-            itemAction= SideNavTreeItem(item,k)
-            itemAction.setText(0,v["name"])
+    # class SideNav(QWidget):
+    #     def __init__(self,parent):
+    #         super().__init__()
+    # 
+    # 
+    #         #print(configuration.config)
+    #         self.side_nav_tree = parent
+    # 
+    #         self.setTree("general")
+    #         self.setTree("applications")
+    # 
+    #         # general = SideNavTreeItem(side_nav_tree,"general")
+    #         # general.setText(0,"General utilities")
+    # 
+    #         # for k,v in config["general"].items():
+    #         #     generalAction= SideNavTreeItem(general,k)
+    #         #     generalAction.setText(0,v["name"])
+    # 
+    # 
+    #     def setTree(self,item_key):
+    # 
+    #         item = SideNavTreeItem(self.side_nav_tree,item_key)
+    #         item.setText(0,configuration.config[item_key]["name"])
+    # 
+    #         for k,v in configuration.config[item_key]["actions"].items():
+    #             itemAction= SideNavTreeItem(item,k)
+    #             itemAction.setText(0,v["name"])
 
 
 class ItemViewer():

@@ -1,0 +1,14 @@
+general:
+  name: "General utilities"
+  actions:
+      
+
+applications:
+  name: "Applications"
+  desc: "Application specific keybindings"
+  actions:
+    teams:
+      name: "Microsoft Teams"
+      desc: "open microsoft teams and other application specific keybindings"
+  
+  

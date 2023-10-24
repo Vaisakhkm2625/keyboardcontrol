@@ -1,0 +1,16 @@
+
+screen-record:
+  name: "screen recording"
+  desc: "Take Screen recording"
+  keybinding: super-shift-j
+  supported_os:
+    linux:
+      hyprland:
+        cmd: "ffmpeg"
+        dependency: "ffmpeg"
+        script_path: ""
+
+      gnome:
+        cmd: "ffmpeg"
+        dependency: "ffmpeg"
+        script_path: ""
