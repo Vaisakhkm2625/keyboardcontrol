@@ -1,10 +1,11 @@
 import sys,yaml
-from PyQt6.QtCore import QStandardPaths
+from PyQt6.QtCore import QStandardPaths, pyqtSignal
 from PyQt6.QtWidgets import QApplication, QHBoxLayout,QMainWindow, QWidget
 
 from AppMainUi import Ui_MainWindow
 from sidebar2 import ConfigTreeView
 
+from EditWindow import EditPropertyWindow
 
 class Config():
     def __init__(self):
@@ -29,7 +30,6 @@ class Config():
             print(self.config)
 
 
-
 # TODO: connect with signels and slots and make this local variable
 configuration = Config()
         
@@ -43,8 +43,10 @@ class Application(QApplication):
         self.window.show()
 
 
-
 class MainWindow(QMainWindow):
+
+    edit_signel = pyqtSignal()
+
     def __init__(self):
         super().__init__()
 
@@ -62,30 +64,20 @@ class MainWindow(QMainWindow):
 
         self.itempropertybody = ItemPropertyUi(self.ui)
 
+        self.ui.edit_properties_button.clicked.connect(self.editProperies)
 
 
-        #self.sidenav = SideNav(self.ui.treeWidget)
-
-        #self.ui.treeWidget.clicked.connect(self.setBodyItem)
-
-        #self.itemViewer = ItemViewer(self.ui,"general","screenshot")
-        #self.itemViewer.setValuesUi("screenshot")
-
-
-        #treew = QTreeWidget(self)
-        #treex = QTreeWidget(treew)
-
-        #self.show()
 
     def setBodyItem(self,filepath):
         print("setBodyItem",filepath)
         configuration.setCurrentConfig(filepath)
         self.itempropertybody.setValuesUi()
 
+    def editProperies(self):
+        print("hello")
 
-
-
-
+        self.editiwindow = EditPropertyWindow() 
+        self.editiwindow.show()
 
 
 class ItemPropertyUi():
@@ -132,6 +124,8 @@ class ItemPropertyUi():
     #   keybinding = configuration.config["keybinding"]
     #   self.ui.keySequence.setKeySequence(keybinding)
         return "Ctrl+Shift+j"
+
+
 
 
 

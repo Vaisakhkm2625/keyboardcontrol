@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>786</width>
-    <height>658</height>
+    <height>645</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -26,10 +26,27 @@
          <widget class="QWidget" name="general_edit"/>
          <widget class="QWidget" name="general_page">
           <layout class="QGridLayout" name="gridLayout_3">
-           <item row="4" column="0">
-            <widget class="QLabel" name="shotcut_label">
+           <item row="5" column="2">
+            <widget class="QKeySequenceEdit" name="keySequence"/>
+           </item>
+           <item row="7" column="0">
+            <widget class="QPushButton" name="reset_button">
              <property name="text">
-              <string>Shortcut</string>
+              <string>Reset</string>
+             </property>
+            </widget>
+           </item>
+           <item row="7" column="2">
+            <widget class="QPushButton" name="edit_properties_button">
+             <property name="text">
+              <string>Edit</string>
+             </property>
+            </widget>
+           </item>
+           <item row="7" column="3">
+            <widget class="QPushButton" name="save_button">
+             <property name="text">
+              <string>Save</string>
              </property>
             </widget>
            </item>
@@ -46,12 +63,42 @@
              </property>
             </spacer>
            </item>
-           <item row="3" column="0" colspan="4">
-            <widget class="QLabel" name="desc">
+           <item row="2" column="0" colspan="3">
+            <widget class="QLabel" name="uid">
              <property name="text">
-              <string>Description</string>
+              <string>label</string>
              </property>
             </widget>
+           </item>
+           <item row="0" column="1" colspan="2">
+            <widget class="QLabel" name="name">
+             <property name="text">
+              <string>name</string>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="3">
+            <widget class="QComboBox" name="comboBox_2"/>
+           </item>
+           <item row="5" column="0">
+            <widget class="QLabel" name="shotcut_label">
+             <property name="text">
+              <string>Shortcut</string>
+             </property>
+            </widget>
+           </item>
+           <item row="6" column="2">
+            <spacer name="verticalSpacer_2">
+             <property name="orientation">
+              <enum>Qt::Vertical</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>20</width>
+               <height>40</height>
+              </size>
+             </property>
+            </spacer>
            </item>
            <item row="0" column="3">
             <spacer name="horizontalSpacer_3">
@@ -66,41 +113,15 @@
              </property>
             </spacer>
            </item>
-           <item row="1" column="0" colspan="3">
-            <widget class="QLabel" name="uid">
+           <item row="1" column="0">
+            <widget class="QLabel" name="desc">
              <property name="text">
-              <string>label</string>
+              <string>Description</string>
              </property>
             </widget>
-           </item>
-           <item row="5" column="1">
-            <spacer name="verticalSpacer_2">
-             <property name="orientation">
-              <enum>Qt::Vertical</enum>
-             </property>
-             <property name="sizeHint" stdset="0">
-              <size>
-               <width>20</width>
-               <height>40</height>
-              </size>
-             </property>
-            </spacer>
-           </item>
-           <item row="0" column="1" colspan="2">
-            <widget class="QLabel" name="name">
-             <property name="text">
-              <string>name</string>
-             </property>
-            </widget>
-           </item>
-           <item row="4" column="2">
-            <widget class="QKeySequenceEdit" name="keySequence"/>
-           </item>
-           <item row="1" column="3">
-            <widget class="QComboBox" name="comboBox"/>
            </item>
            <item row="2" column="3">
-            <widget class="QComboBox" name="comboBox_2"/>
+            <widget class="QComboBox" name="comboBox"/>
            </item>
           </layout>
          </widget>
@@ -194,9 +215,9 @@
            </spacer>
           </item>
           <item>
-           <widget class="QPushButton" name="save_button">
+           <widget class="QPushButton" name="apply_button">
             <property name="text">
-             <string>save</string>
+             <string>apply</string>
             </property>
            </widget>
           </item>

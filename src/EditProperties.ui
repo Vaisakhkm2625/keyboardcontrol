@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Form</class>
+ <widget class="QWidget" name="Form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>400</width>
+    <height>273</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <layout class="QFormLayout" name="formLayout">
+   <item row="9" column="1">
+    <widget class="QPushButton" name="Submit">
+     <property name="text">
+      <string>Submit</string>
+     </property>
+    </widget>
+   </item>
+   <item row="9" column="0">
+    <widget class="QPushButton" name="descard_button">
+     <property name="text">
+      <string>Discard</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="0">
+    <widget class="QLabel" name="name_label">
+     <property name="text">
+      <string>Name</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="1">
+    <widget class="QLineEdit" name="lineEdit"/>
+   </item>
+   <item row="1" column="1">
+    <widget class="QLineEdit" name="desc_edit"/>
+   </item>
+   <item row="2" column="1">
+    <widget class="QLineEdit" name="keybinding_edit"/>
+   </item>
+   <item row="3" column="1">
+    <widget class="QLineEdit" name="cmd_edit"/>
+   </item>
+   <item row="4" column="1">
+    <widget class="QLineEdit" name="dependency_edit"/>
+   </item>
+   <item row="5" column="1">
+    <widget class="QLineEdit" name="script_path_edit"/>
+   </item>
+   <item row="1" column="0">
+    <widget class="QLabel" name="desc_edit_label">
+     <property name="text">
+      <string>Description</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="0">
+    <widget class="QLabel" name="keybinding_label">
+     <property name="text">
+      <string>Keybinding</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="0">
+    <widget class="QLabel" name="cmd_label">
+     <property name="text">
+      <string>Command</string>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="0">
+    <widget class="QLabel" name="dependency_label">
+     <property name="text">
+      <string>Dependency</string>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="0">
+    <widget class="QLabel" name="script_path_label">
+     <property name="text">
+      <string>script path</string>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
