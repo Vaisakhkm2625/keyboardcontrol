@@ -1,14 +1,13 @@
-name: "Screen shot"
-desc: "Take Screen shots"
-keybinding: super-shift-s
+desc: Take Screen shots
+keybinding: Ctrl+I
+name: Screen shot
 supported_os:
   linux:
-    hyprland:
-      cmd: "scrot"
-      dependency: "scrot"
-      script_path: ""
-
     gnome:
-      cmd: "scrot-gnome"
-      dependency: "scrot-gnome"
-      script_path: ""
+      cmd: scrot-gnome
+      dependency: scrot-gnome
+      script_path: scrot-gnome
+    hyprland:
+      cmd: scrot -e
+      dependency: scrot
+      script_path: ''

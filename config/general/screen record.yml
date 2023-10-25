@@ -1,14 +1,18 @@
-name: "screen recording"
-desc: "Take Screen recording"
-keybinding: Ctrl+Shift+j
+desc: Take Screen hi
+keybinding: Ctrl+A
+name: screen recording
 supported_os:
   linux:
-    hyprland:
-      cmd: "ffmpeg"
-      dependency: "ffmpeg"
-      script_path: ""
-
     gnome:
-      cmd: "ffmpeg"
-      dependency: "ffmpeg"
-      script_path: ""
+      cmd: ffmpeg
+      dependency: ffmpeg
+      script_path: ''
+    hyprland:
+      cmd: ffmpeg
+      dependency: ffmpeg
+      script_path: ''
+  windows:
+    windows10:
+      cmd: powershell screenroctd
+      dependency: powershell
+      script_path: ''

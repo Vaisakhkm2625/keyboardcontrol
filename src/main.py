@@ -1,3 +1,4 @@
+from io import open_code
 import sys,yaml
 from PyQt6.QtCore import QStandardPaths, pyqtSignal
 from PyQt6.QtWidgets import QApplication, QHBoxLayout,QMainWindow, QWidget
@@ -30,6 +31,14 @@ class Config():
             self.config = yaml.safe_load(file)
             #print(self.config)
 
+    def saveConfig(self):
+        print("saving")
+        print(yaml.dump(self.config))
+
+        with open(self.currentConfigPath, 'w') as  file:
+            yaml.dump(self.config,file, default_flow_style=False)
+
+
 # TODO: connect with signels and slots and make this local variable
 configuration = Config()
         
@@ -60,18 +69,25 @@ class MainWindow(QMainWindow):
         self.configTreeView = ConfigTreeView(configuration.userConfigPath)
         layout = QHBoxLayout(self.ui.filetree_wrapper)
         layout.addWidget(self.configTreeView)
+
         self.configTreeView.fileClicked.connect(self.setBodyItem)
 
         #self.itempropertybody = ItemPropertyUi(self.ui)
         self.ui.edit_properties_button.clicked.connect(self.editProperies)
 
+        self.ui.keybinding.keySequenceChanged.connect(self.getKeybinding)
         self.ui.os_combobox.activated.connect(self.onOSComboboxChanged)
         self.ui.platform_combobox.activated.connect(self.onPlatformComboboxChanged)
-
+        self.ui.save_button.clicked.connect(self.onSaveButtonPressed)
+        self.ui.settings_button.clicked.connect(self.onSettingsButtonClicked)
+        
+    def onSaveButtonPressed(self):
+        configuration.saveConfig()
 
     def setBodyItem(self,filepath):
         print("setBodyItem",filepath)
         configuration.setCurrentConfig(filepath)
+        self.ui.stackedWidget.setCurrentWidget(self.ui.general_page)
         self.setValuesUi()
 
     def refreshUi(self,config):
@@ -166,8 +182,14 @@ class MainWindow(QMainWindow):
     def onPlatformComboboxChanged(self):
         print("PlatformComboboxChanged")
         configuration.selectedPlatform= self.ui.platform_combobox.currentText()
-        self.setValuesUi
+        self.setValuesUi()
 
+    def onSettingsButtonClicked(self):
+        print("StackViewChaged")
+        self.ui.stackedWidget.setCurrentWidget(self.ui.settings_page)
+        self.ui.config_path.setText(configuration.userConfigPath)
+
+        
 
 
     # def getDescUi(self):
