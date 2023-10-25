@@ -24,7 +24,7 @@ class EditPropertyWindow(QWidget):
         self.ui.desc_edit.setText(self.configuration.config["desc"])
         self.ui.cmd_edit.setText(self.configuration.config["supported_os"][self.configuration.selectedOs][self.configuration.selectedPlatform]["cmd"])
         self.ui.dependency_edit.setText(self.configuration.config["supported_os"][self.configuration.selectedOs][self.configuration.selectedPlatform]["dependency"])
-        self.ui.script_path_edit.setText(self.configuration.config["supported_os"][self.configuration.selectedOs][self.configuration.selectedPlatform]["dependency"])
+        self.ui.script_path_edit.setText(self.configuration.config["supported_os"][self.configuration.selectedOs][self.configuration.selectedPlatform]["script_path"])
         self.ui.keybinding_edit.setKeySequence(self.configuration.config["keybinding"])
 
     def getValuesUi(self):

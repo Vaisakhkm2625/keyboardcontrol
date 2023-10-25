@@ -80,9 +80,14 @@ class MainWindow(QMainWindow):
         self.ui.platform_combobox.activated.connect(self.onPlatformComboboxChanged)
         self.ui.save_button.clicked.connect(self.onSaveButtonPressed)
         self.ui.settings_button.clicked.connect(self.onSettingsButtonClicked)
+
+        self.ui.reset_button.clicked.connect(self.onResetButtonPressed)
         
     def onSaveButtonPressed(self):
         configuration.saveConfig()
+
+    def onResetButtonPressed(self):
+        self.setBodyItem(configuration.currentConfigPath)
 
     def setBodyItem(self,filepath):
         print("setBodyItem",filepath)
@@ -163,6 +168,8 @@ class MainWindow(QMainWindow):
     def changePlatformComboboxSelection(self):
         platformsList = list(configuration.config["supported_os"][configuration.selectedOs])
         configuration.selectedPlatform = platformsList[0]
+        #configuration.platform = self.ui.platform_combobox.currentText()
+
         self.setPlatformCombobox()
 
 
@@ -171,7 +178,7 @@ class MainWindow(QMainWindow):
         #addItems(list(configuration.config["supported_os"]))
 
     def getPlatformComboboxSelection(self):
-        configuration.platform = self.ui.os_combobox.currentText()
+        configuration.platform = self.ui.platform_combobox.currentText()
         #addItems(list(configuration.config["supported_os"]))
 
     def onOSComboboxChanged(self):
@@ -182,7 +189,7 @@ class MainWindow(QMainWindow):
     def onPlatformComboboxChanged(self):
         print("PlatformComboboxChanged")
         configuration.selectedPlatform= self.ui.platform_combobox.currentText()
-        self.setValuesUi()
+        #self.setValuesUi()
 
     def onSettingsButtonClicked(self):
         print("StackViewChaged")

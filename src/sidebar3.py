@@ -166,7 +166,7 @@ class ConfigTreeView(QWidget):
                 if new_name:
                     dir_path = self.model.filePath(index).rpartition("/")[0]
                     old_path = self.model.filePath(index)
-                    new_path = dir_path + "/" + new_name
+                    new_path = dir_path + "/" + new_name + ".yml"
                     os.rename(old_path,new_path)
 
                     #if self.model.rename(index, new_path):
