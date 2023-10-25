@@ -4,7 +4,7 @@ from PyQt6.QtCore import QStandardPaths, pyqtSignal
 from PyQt6.QtWidgets import QApplication, QHBoxLayout,QMainWindow, QWidget
 
 from AppMainUi import Ui_MainWindow
-from sidebar2 import ConfigTreeView
+from sidebar3 import ConfigTreeView
 
 from EditWindow import EditPropertyWindow
 
