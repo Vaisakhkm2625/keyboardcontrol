@@ -101,7 +101,7 @@ class Window(QWidget):
 
         configLocation = QStandardPaths.writableLocation(QStandardPaths.StandardLocation.ConfigLocation)
         userConfigLocation = configLocation+"/keyboardcontrol"
-        #override
+        #overridea-temp
         userConfigLocation = "/home/vaisakh/vaisakhRoot/programming/python/keyboardcontrol/config/"
         print(configLocation)
 
