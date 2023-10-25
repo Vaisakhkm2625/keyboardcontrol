@@ -1,36 +1,39 @@
-
 import sys
 from PyQt6.QtGui import QFileSystemModel
 from PyQt6.QtWidgets import QApplication, QMainWindow, QTreeView
-from PyQt6.QtCore import Qt
+from PyQt6.QtCore import QDir, QModelIndex
 
-class CustomFileSystemModel(QFileSystemModel):
-    def data(self, index, role):
-        if role == Qt.ItemDataRole.DisplayRole and index.isValid() and index.column() == 0:
-            # Get the file name without extension
-            fileName = super().data(index, Qt.ItemDataRole.DisplayRole)
-            extensionIndex = fileName.rfind('.')
-            if extensionIndex != -1:
-                fileName = fileName[:extensionIndex]
-            return fileName
-        return super().data(index, role)
+class FileTreeApp(QMainWindow):
+    def __init__(self):
+        super().__init__()
 
-def main():
+        self.setWindowTitle("File Tree Viewer")
+        self.setGeometry(100, 100, 800, 600)
+
+        self.tree_view = QTreeView(self)
+        self.tree_view.setGeometry(10, 10, 780, 580)
+
+        self.model = QFileSystemModel()
+        self.model.setRootPath(QDir.rootPath())
+        self.model.setNameFilters(["*.yml"])
+        self.model.setNameFilterDisables(False)
+
+        self.tree_view.setModel(self.model)
+        self.tree_view.setRootIndex(self.model.index(QDir.rootPath()))
+
+        self.tree_view.hideColumn(1)  # Hide size column
+        self.tree_view.hideColumn(2)  # Hide type column
+        self.tree_view.hideColumn(3)  # Hide date modified column
+
+        self.tree_view.doubleClicked.connect(self.on_item_double_clicked)
+
+    def on_item_double_clicked(self, index):
+        if not self.model.isDir(index):
+            file_path = self.model.filePath(index)
+            print(f"Double-clicked on file: {file_path}")
+
+if __name__ == '__main__':
     app = QApplication(sys.argv)
-    window = QMainWindow()
-    window.setGeometry(100, 100, 800, 600)
-
-    treeView = QTreeView(window)
-    customModel = CustomFileSystemModel()
-    customModel.setRootPath('')
-    treeView.setModel(customModel)
-    treeView.setRootIndex(customModel.index(''))  # Set the root index to the desired directory
-    treeView.setColumnWidth(0, 300)  # Set the column width as needed
-
-    window.setCentralWidget(treeView)
+    window = FileTreeApp()
     window.show()
-
     sys.exit(app.exec())
-
-if __name__ == "__main__":
-    main()
