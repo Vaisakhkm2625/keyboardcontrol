@@ -1,0 +1,277 @@
+
+keymap:
+  - name: general keys
+    remap:
+      super-enter:
+        launch: ["kitty"]
+
+      super-b:
+        launch: ["firefox"]
+
+  - name: applications
+    remap:
+      super-a:
+        remap:
+          b:
+            launch: ["brave"]
+          e:
+            launch: ["thunar"]
+
+  - name: window management
+    remap:
+      super-shift-c:
+        launch: ["hyprctl", "dispatch", "killactive"]
+
+  - name: screenshots
+    remap:
+      super-m:
+        launch: ["exit"]
+
+      super-e:
+        launch: ["thunar"]
+
+      super-shift-s:
+        remap:
+          S:
+            launch: ["grim", "-g", "$(slurp)", "~/Pictures/screenshots/$(date +'%s_grim.png')"]
+
+      super-control-s:
+        launch: ["grim", "~/Pictures/screenshots/$(date +'%s_grim.png')"]
+
+  - name: wallpaper and theming
+    remap:
+      super-y:
+        launch: ["swww", "img", "~/.config/hypr/wallhaven-ymrk77_1920x1080.png", "--transition-duration", "1"]
+
+      super-shift-y:
+        launch: ["bash", "~/dotfiles/scripts/switchWal.sh"]
+
+  - name: miscellaneous
+    remap:
+      super-n:
+        launch: ["swaync-client", "-t"]
+
+      super-v:
+        launch: ["togglefloating"]
+
+      super-shift-p:
+        launch: ["pin"]
+
+      super-r:
+        launch: ["rofi", "-show", "drun"]
+
+      super-p:
+        launch: ["pseudo"]
+
+      super-t:
+        launch: ["togglesplit"]
+
+      super-o:
+        launch: ["toggleopaque"]
+
+      super-f:
+        launch: ["fullscreen"]
+
+      super-shift-f:
+        launch: ["fakefullscreen"]
+
+      super-u:
+        launch: ["pkill", "-SIGUSR1", "waybar"]
+
+      super-period:
+        launch: ["rofimoji"]
+
+  - name: testing zone
+    remap:
+      super-shift-e:
+        launch: ["[workspace 2 float;noanim] thunar"]
+
+      super-alt-space:
+        launch: ["playerctl", "play-pause"]
+
+      super-alt-j:
+        launch: ["playerctl", "play-pause"]
+
+      super-alt-k:
+        launch: ["playerctl", "play-pause"]
+
+      super-alt-h:
+        launch: ["playerctl", "position", "5-"]
+
+      super-alt-k:
+        launch: ["playerctl", "position", "5+"]
+
+  - name: move focus and swap windows
+    remap:
+      super-left:
+        launch: ["movefocus", "l"]
+
+      super-right:
+        launch: ["movefocus", "r"]
+
+      super-up:
+        launch: ["movefocus", "u"]
+
+      super-down:
+        launch: ["movefocus", "d"]
+
+      super-h:
+        launch: ["movefocus", "l"]
+
+      super-l:
+        launch: ["movefocus", "r"]
+
+      super-k:
+        launch: ["movefocus", "u"]
+
+      super-j:
+        launch: ["movefocus", "d"]
+
+      super-shift-h:
+        launch: ["swapwindow", "l"]
+
+      super-shift-l:
+        launch: ["swapwindow", "r"]
+
+      super-shift-k:
+        launch: ["swapwindow", "u"]
+
+      super-shift-j:
+        launch: ["swapwindow", "d"]
+
+  - name: groups and workspaces
+    remap:
+      super-shift-g:
+        launch: ["togglegroup"]
+
+      super-alt-h:
+        launch: ["moveintogroup", "l"]
+
+      super-alt-l:
+        launch: ["moveintogroup", "r"]
+
+      super-alt-k:
+        launch: ["moveintogroup", "u"]
+
+      super-alt-j:
+        launch: ["moveintogroup", "d"]
+
+      super-alt-h:
+        launch: ["moveoutofgroup", "l"]
+
+      super-alt-l:
+        launch: ["moveoutofgroup", "r"]
+
+      super-alt-k:
+        launch: ["moveoutofgroup", "u"]
+
+      super-alt-j:
+        launch: ["moveoutofgroup", "d"]
+
+  - name: workspace
+    remap:
+      super-shift-x:
+        launch: ["movetoworkspace", "special"]
+
+      super-x:
+        launch: ["togglespecialworkspace"]
+
+      super-shift-q:
+        launch: ["movetoworkspace", "special:hi"]
+
+      super-q:
+        launch: ["togglespecialworkspace", "hi"]
+
+      super-shift-w:
+        launch: ["movetoworkspace", "special:2"]
+
+      super-w:
+        launch: ["togglespecialworkspace", "2"]
+
+  - name: switch workspaces
+    remap:
+      super-1:
+        launch: ["workspace", "1"]
+
+      super-2:
+        launch: ["workspace", "2"]
+
+      super-3:
+        launch: ["workspace", "3"]
+
+      super-4:
+        launch: ["workspace", "4"]
+
+      super-5:
+        launch: ["workspace", "5"]
+
+      super-6:
+        launch: ["workspace", "6"]
+
+      super-7:
+        launch: ["workspace", "7"]
+
+      super-8:
+        launch: ["workspace", "8"]
+
+      super-9:
+        launch: ["workspace", "9"]
+
+      super-0:
+        launch: ["workspace", "10"]
+
+  - name: move active window to workspace
+    remap:
+      super-shift-1:
+        launch: ["movetoworkspace", "1"]
+
+      super-shift-2:
+        launch: ["movetoworkspace", "2"]
+
+      super-shift-3:
+        launch: ["movetoworkspace", "3"]
+
+      super-shift-4:
+        launch: ["movetoworkspace", "4"]
+
+      super-shift-5:
+        launch: ["movetoworkspace", "5"]
+
+      super-shift-6:
+        launch: ["movetoworkspace", "6"]
+
+      super-shift-7:
+        launch: ["movetoworkspace", "7"]
+
+      super-shift-8:
+        launch: ["movetoworkspace", "8"]
+
+      super-shift-9:
+        launch: ["movetoworkspace", "9"]
+
+      super-shift-0:
+        launch: ["movetoworkspace", "10"]
+
+  - name: scroll through workspaces
+    remap:
+      super-mouse_down:
+        launch: ["workspace", "e+1"]
+
+      super-mouse_up:
+        launch: ["workspace", "e-1"]
+
+  - name: move/resize windows
+    remap:
+      super-mouse:272:
+        launch: ["movewindow"]
+
+      super-mouse:273:
+        launch: ["resizewindow"]
+
+  - name: zoom
+    remap:
+      super-ctrl-a:
+        launch: ["hyprctl", "keyword", "misc:cursor_zoom_factor", "2.0"]
+
+      super-ctrl-b:
+        launch: ["hyprctl", "keyword", "misc:cursor_zoom_factor", "1.0"]

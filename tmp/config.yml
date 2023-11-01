@@ -1,0 +1,43 @@
+modmap:
+  - name: Global
+    remap:
+      capsLock:
+        held: leftctrl
+        alone: esc
+        alone_timeout_millis: 150 
+
+keymap:
+  - name: general keys
+    remap:
+      super-enter:
+        launch: ["kitty"]
+
+      super-b:
+        launch: ["firefox"]
+
+  - name: utilites
+    remap: 
+      super-dot:
+        launch: ["rofimoji"]
+        
+
+  - name: applications
+    remap:
+      super-a:
+        remap:
+          b:
+            launch: ["brave"]
+          e:
+            launch: ["thunar"]
+
+  - name: window management 
+    remap:
+      super-shift-c:
+        launch: ["hyprctl","dispatch","killactive"]
+
+
+  - name: typeit
+    remap:
+      super-i:
+        remap:
+          h: [h,e,l,l,o]

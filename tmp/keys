@@ -1,0 +1,84 @@
+Here's a list of what each keybinding in the provided configuration does:
+1. `SUPER, return, exec, kitty`: Launches the `kitty` terminal emulator.
+2. `SUPER, b, exec, firefox`: Launches the Firefox web browser.
+3. `SUPER SHIFT, b, exec, brave`: Launches the Brave web browser.
+4. `SUPER SHIFT, C, killactive`: Kills the currently active window.
+5. `SUPER, M, exit`: Exits the window manager or desktop environment.
+6. `SUPER, E, exec, thunar`: Launches the Thunar file manager.
+7. `SUPER SHIFT, S, exec, grim -g "$(slurp)" ~/Pictures/screenshots/$(date +'%s_grim.png')`: Captures a screenshot using the `grim` screenshot tool with a selected region and saves it to a specific location in the user's Pictures directory.
+8. `SUPER CONTROL, S, exec, grim ~/Pictures/screenshots/$(date +'%s_grim.png')`: Captures a fullscreen screenshot and saves it to a specific location in the user's Pictures directory.
+9. `SUPER, y, exec, swww img ~/.config/hypr/wallhaven-ymrk77_1920x1080.png --transition-duration 1`: Applies an image transition effect on the wallpaper using a specific image.
+10. `SUPER SHIFT, Y, exec, bash ~/dotfiles/scripts/switchWal.sh`: Executes a custom script to change the wallpaper.
+11. `SUPER, n, exec, swaync-client -t`: Opens the Sway notification center.
+12. `SUPER, V, togglefloating`: Toggles the floating mode for the active window.
+13. `SUPER SHIFT, p, pin`: Pins the active window.
+14. `SUPER, R, exec, rofi -show drun`: Opens the Rofi application launcher.
+15. `SUPER, P, pseudo`: Activates the "dwindle" mode (custom function).
+16. `SUPER, t, togglesplit`: Toggles the split mode in the "dwindle" layout.
+17. `SUPER, o, toggleopaque`: Toggles the opacity of windows in the "dwindle" layout.
+18. `SUPER, f, fullscreen`: Toggles fullscreen mode for the active window.
+19. `SUPER SHIFT, f, fakefullscreen`: Toggles fake fullscreen mode for the active window.
+20. `SUPER, u, exec, pkill -SIGUSR1 waybar`: Sends a signal to the Waybar to refresh it.
+21. `SUPER, Period, exec, rofimoji`: Opens Rofi Emoji Picker.
+22. `SUPER SHIFT, E, exec, [workspace 2 float;noanim] thunar`: Opens Thunar on workspace 2 in floating mode without animation.
+23. `SUPER ALT, space, exec, playerctl play-pause`: Pauses or resumes media playback.
+24. `SUPER ALT, j, exec, playerctl play-pause`: Pauses or resumes media playback.
+25. `SUPER ALT, k, exec, playerctl play-pause`: Pauses or resumes media playback.
+26. `SUPER ALT, h, exec, playerctl position 5-`: Seeks backward in media playback.
+27. `SUPER ALT, k, exec, playerctl position 5+`: Seeks forward in media playback.
+28. `SUPER, left, movefocus, l`: Moves the focus to the window on the left.
+29. `SUPER, right, movefocus, r`: Moves the focus to the window on the right.
+30. `SUPER, up, movefocus, u`: Moves the focus to the window above.
+31. `SUPER, down, movefocus, d`: Moves the focus to the window below.
+32. `SUPER, h, movefocus, l`: Same as `SUPER, left, movefocus, l`.
+33. `SUPER, l, movefocus, r`: Same as `SUPER, right, movefocus, r`.
+34. `SUPER, k, movefocus, u`: Same as `SUPER, up, movefocus, u`.
+35. `SUPER, j, movefocus, d`: Same as `SUPER, down, movefocus, d`.
+36. `SUPER SHIFT, h, swapwindow, l`: Swaps the active window with the window on the left.
+37. `SUPER SHIFT, l, swapwindow, r`: Swaps the active window with the window on the right.
+38. `SUPER SHIFT, k, swapwindow, u`: Swaps the active window with the window above.
+39. `SUPER SHIFT, j, swapwindow, d`: Swaps the active window with the window below.
+40. `SUPER SHIFT, g, togglegroup`: Toggles the group for the active window.
+41. `SUPER ALT, h, moveintogroup, l`: Moves the active window into a group to the left.
+42. `SUPER ALT, l, moveintogroup, r`: Moves the active window into a group to the right.
+43. `SUPER ALT, k, moveintogroup, u`: Moves the active window into a group above.
+44. `SUPER ALT, j, moveintogroup, d`: Moves the active window into a group below.
+45. `SUPER ALT, h, moveoutofgroup, l`: Moves the active window out of a group to the left.
+46. `SUPER ALT, l, moveoutofgroup, r`: Moves the active window out of a group to the right.
+47. `SUPER ALT, k, moveoutofgroup, u`: Moves the active window out of a group above.
+48. `SUPER ALT, j, moveoutofgroup, d`: Moves the active window out of a group below.
+49. `SUPER SHIFT, x, movetoworkspace, special`: Moves the active window to a workspace named "special."
+50. `SUPER, x, togglespecialworkspace`: Toggles the visibility of the "special" workspace.
+51. `SUPER SHIFT, q, movetoworkspace, special:hi`: Moves the active window to a workspace named "special:hi."
+52. `SUPER, q, togglespecialworkspace,hi`: Toggles the visibility of the "special:hi" workspace.
+53. `SUPER SHIFT, w, movetoworkspace, special:2`: Moves the active window to a workspace named "special:2."
+54. `SUPER, w, togglespecialworkspace,2`: Toggles the visibility of the "special:2" workspace.
+
+55. `SUPER, 1, workspace, 1`: Switches to workspace 1.
+56. `SUPER, 2, workspace, 2`: Switches to workspace 2.
+57. `SUPER, 3, workspace, 3`: Switches to workspace 3.
+58. `SUPER, 4, workspace, 4`: Switches to workspace 4.
+59. `SUPER, 5, workspace, 5`: Switches to workspace 5.
+60. `SUPER, 6, workspace, 6`: Switches to workspace 6.
+61. `SUPER, 7, workspace, 7`: Switches to workspace 7.
+62. `SUPER, 8, workspace, 8`: Switches to workspace 8.
+63. `SUPER, 9, workspace, 9`: Switches to workspace 9.
+64. `SUPER, 0, workspace, 10`: Switches to workspace 10.
+
+65. `SUPER SHIFT, 1, movetoworkspace, 1`: Moves the active window to workspace 1.
+66. `SUPER SHIFT, 2, movetoworkspace, 2`: Moves the active window to workspace 2.
+67. `SUPER SHIFT, 3, movetoworkspace, 3`: Moves the active window to workspace 3.
+68. `SUPER SHIFT, 4, movetoworkspace, 4`: Moves the active window to workspace 4.
+69. `SUPER SHIFT, 5, movetoworkspace, 5`: Moves the active window to workspace 5.
+70. `SUPER SHIFT, 6, movetoworkspace, 6`: Moves the active window to workspace 6.
+71. `SUPER SHIFT, 7, movetoworkspace, 7`: Moves the active window to workspace 7.
+72. `SUPER SHIFT, 8, movetoworkspace, 8`: Moves the active window to workspace 8.
+73. `SUPER SHIFT, 9, movetoworkspace, 9`: Moves the active window to workspace 9.
+74. `SUPER SHIFT, 0, movetoworkspace, 10`: Moves the active window to workspace 10.
+
+75. `SUPER, mouse_down, workspace, e+1`: Scrolls through existing workspaces in the forward direction.
+76. `SUPER, mouse_up, workspace, e-1`: Scrolls through existing workspaces in the backward direction.
+77. `bindm = SUPER, mouse:272, movewindow`: Allows moving windows by clicking and dragging with the left mouse button while holding the SUPER key.
+78. `bindm = SUPER, mouse:273, resizewindow`: Allows resizing windows by clicking and dragging with the right mouse button while holding the SUPER key.
+79. `SUPER CTRL,a,exec,hyprctl keyword misc:cursor_zoom_factor 2.0`: Zooms in the cursor.
+80. `SUPER CTRL,b,exec,hyprctl keyword misc:cursor_zoom_factor 1.0`: Resets the cursor zoom to the default.

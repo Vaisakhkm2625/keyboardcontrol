@@ -1,0 +1,117 @@
+SUPER = SUPER
+
+# Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
+SUPER, return, exec, kitty
+SUPER, b, exec, firefox
+SUPER SHIFT, b, exec, brave 
+SUPER SHIFT, C, killactive, 
+SUPER, M, exit, 
+SUPER, E, exec, thunar
+SUPER SHIFT, S, exec, grim -g "$(slurp)" ~/Pictures/screenshots/$(date +'%s_grim.png')
+SUPER CONTROL, S, exec, grim ~/Pictures/screenshots/$(date +'%s_grim.png')
+SUPER, y, exec, swww img ~/.config/hypr/wallhaven-ymrk77_1920x1080.png  --transition-duration 1
+SUPER SHIFT, Y, exec, bash ~/dotfiles/scripts/switchWal.sh
+SUPER, n, exec, swaync-client -t
+SUPER, V, togglefloating, 
+SUPER SHIFT, p, pin, 
+SUPER, R, exec, rofi -show drun
+SUPER, P, pseudo, # dwindle
+SUPER, t, togglesplit, # dwindle
+SUPER, o, toggleopaque, # dwindle
+SUPER, f, fullscreen
+SUPER SHIFT, f, fakefullscreen
+SUPER, u, exec, pkill -SIGUSR1 waybar 
+SUPER , Period, exec, rofimoji
+
+###### testing zone
+SUPER SHIFT, E, exec, [workspace 2 float;noanim] thunar
+
+SUPER ALT, space, exec, playerctl play-pause
+SUPER ALT, j, exec, playerctl play-pause
+SUPER ALT, k, exec, playerctl play-pause
+SUPER ALT, h, exec, playerctl position 5-
+SUPER ALT, k, exec, playerctl position 5+
+
+
+# Move focus with mainMod + arrow keys
+SUPER, left, movefocus, l
+SUPER, right, movefocus, r
+SUPER, up, movefocus, u
+SUPER, down, movefocus, d
+
+SUPER, h, movefocus, l
+SUPER, l, movefocus, r
+SUPER, k, movefocus, u
+SUPER, j, movefocus, d
+
+
+SUPER SHIFT, h, swapwindow, l
+SUPER SHIFT, l, swapwindow, r
+SUPER SHIFT, k, swapwindow, u
+SUPER SHIFT, j, swapwindow, d
+
+
+SUPER SHIFT, g, togglegroup
+
+SUPER ALT, h, moveintogroup, l
+SUPER ALT, l, moveintogroup, r
+SUPER ALT, k, moveintogroup, u
+SUPER ALT, j, moveintogroup, d
+
+SUPER ALT, h, moveoutofgroup, l
+SUPER ALT, l, moveoutofgroup, r
+SUPER ALT, k, moveoutofgroup, u
+SUPER ALT, j, moveoutofgroup, d
+
+
+# workspace
+SUPER SHIFT, x, movetoworkspace, special 
+SUPER, x, togglespecialworkspace 
+
+SUPER SHIFT, q, movetoworkspace, special:hi
+#SUPER SHIFT, q, movetoworkspace, special:hi
+SUPER, q, togglespecialworkspace,hi
+
+SUPER SHIFT, w, movetoworkspace, special:2
+#SUPER SHIFT, q, movetoworkspace, special:hi
+SUPER, w, togglespecialworkspace,2
+# hyprctl dispatch movetoworkspace special:1
+# hyprctl dispatch togglespecialworkspace 1
+#
+
+# Switch workspaces with mainMod + [0-9]
+SUPER, 1, workspace, 1
+SUPER, 2, workspace, 2
+SUPER, 3, workspace, 3
+SUPER, 4, workspace, 4
+SUPER, 5, workspace, 5
+SUPER, 6, workspace, 6
+SUPER, 7, workspace, 7
+SUPER, 8, workspace, 8
+SUPER, 9, workspace, 9
+SUPER, 0, workspace, 10
+
+# Move active window to a workspace with mainMod + SHIFT + [0-9]
+SUPER SHIFT, 1, movetoworkspace, 1
+SUPER SHIFT, 2, movetoworkspace, 2
+SUPER SHIFT, 3, movetoworkspace, 3
+SUPER SHIFT, 4, movetoworkspace, 4
+SUPER SHIFT, 5, movetoworkspace, 5
+SUPER SHIFT, 6, movetoworkspace, 6
+SUPER SHIFT, 7, movetoworkspace, 7
+SUPER SHIFT, 8, movetoworkspace, 8
+SUPER SHIFT, 9, movetoworkspace, 9
+SUPER SHIFT, 0, movetoworkspace, 10
+
+
+# Scroll through existing workspaces with mainMod + scroll
+SUPER, mouse_down, workspace, e+1
+SUPER, mouse_up, workspace, e-1
+
+# Move/resize windows with mainMod + LMB/RMB and dragging
+bindm = SUPER, mouse:272, movewindow
+bindm = SUPER, mouse:273, resizewindow
+
+# zoom
+SUPER CTRL,a,exec,hyprctl keyword misc:cursor_zoom_factor 2.0
+SUPER CTRL,b,exec,hyprctl keyword misc:cursor_zoom_factor 1.0
