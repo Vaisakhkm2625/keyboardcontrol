@@ -1,4 +1,4 @@
-desc: Take Screen hi
+desc: Take screen recording
 keybinding: Ctrl+S
 name: screen recording
 supported_os:
@@ -8,7 +8,7 @@ supported_os:
       dependency: ffmpeg
       script_path: ''
     hyprland:
-      cmd: ffmpeg
+      cmd: echo screen recording
       dependency: ffmpeg
       script_path: ffmpeg
   windows:

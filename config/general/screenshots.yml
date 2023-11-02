@@ -1,13 +1,13 @@
 desc: Take Screen shots
-keybinding: Ctrl+I
+keybinding: Ctrl+Shift+S
 name: Screen shot
 supported_os:
   linux:
     gnome:
       cmd: scrot-gnome
       dependency: scrot-gnome
-      script_path: scrot-gnome
+      script_path: ''
     hyprland:
-      cmd: echo Screen shots
+      cmd: scrot
       dependency: scrot
       script_path: ''
