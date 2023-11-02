@@ -19,6 +19,7 @@ files = glob.glob("/home/vaisakh/vaisakhRoot/programming/python/keyboardcontrol/
 def execute_command(shell_command):
     try:
         #returned = subprocess.run(shell_command, shell=True)
+        print("setting this")
         returned_out = subprocess.check_output(shell_command, shell=True)
         print(returned_out)
     except Exception as e:
@@ -40,4 +41,4 @@ for config in data:
 
     keyboard.add_hotkey(hotkey.lower(), lambda: execute_command(cmd))
 
-
+keyboard.wait('esc')
