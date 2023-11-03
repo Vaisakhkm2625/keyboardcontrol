@@ -1,6 +1,7 @@
 import yaml,os
 import subprocess
 import glob,keyboard
+#from PyQt6.QtCore import QStandardPaths
 
 os = "linux"
 platform = "hyprland"
@@ -14,13 +15,16 @@ def read_yaml_file(filename):
             print(exc)
 
 
-files = glob.glob("/home/vaisakh/vaisakhRoot/programming/python/keyboardcontrol/config/**/*.yml",recursive=True) # list of all .yaml files in a directory 
+#configLocation = QStandardPaths.writableLocation(QStandardPaths.StandardLocation.ConfigLocation)
+#userConfigPath = configLocation+"/keyboardcontrol"
+userConfigPath = "/home/vaisakh/vaisakhRoot/programming/python/keyboardcontrol/config/**/*.yml"
+files = glob.glob(userConfigPath,recursive=True) # list of all .yaml files in a directory 
 
 def execute_command(shell_command):
     try:
         #returned = subprocess.run(shell_command, shell=True)
         print("setting this")
-        returned_out = subprocess.check_output(shell_command, shell=True)
+        returned_out = subprocess.check_output(shell_command,user="vaisakh", shell=True)
         print(returned_out)
     except Exception as e:
         print(f"Error executing the command: {e}")

@@ -4,10 +4,10 @@ name: Screen shot
 supported_os:
   linux:
     gnome:
-      cmd: scrot-gnome
+      cmd: kitty -e "echo taking screenshot"
       dependency: scrot-gnome
       script_path: scrot-gnome
     hyprland:
-      cmd: echo Screen shots
+      cmd: kitty -e "echo taking screenshot"
       dependency: scrot
       script_path: ''
