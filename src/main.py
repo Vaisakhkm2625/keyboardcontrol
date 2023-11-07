@@ -26,8 +26,9 @@ class Config():
 
         self.os=sys.platform
         self.selectedOs=sys.platform
-        self.platform="hyprland"
-        self.selectedPlatform="hyprland"
+        #self.platform="hyprland"
+        #self.selectedPlatform="hyprland"
+        self.selectedPlatform="windows10"
 
     def setCurrentConfig(self,path):
         self.currentConfigPath = path

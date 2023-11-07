@@ -11,7 +11,7 @@ supported_os:
       cmd: echo screen recording
       dependency: ffmpeg
       script_path: ffmpeg
-  windows:
+  win32:
     windows10:
       cmd: powershell screenroctd
       dependency: powershell

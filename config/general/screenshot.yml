@@ -11,3 +11,10 @@ supported_os:
       cmd: kitty -e "echo taking screenshot"
       dependency: scrot
       script_path: ''
+
+  win32:
+    windows10:
+      cmd: notepad 
+      dependency: notepad
+      script_path: notepad      
+
