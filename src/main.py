@@ -17,7 +17,8 @@ class Config():
         configLocation = QStandardPaths.writableLocation(QStandardPaths.StandardLocation.ConfigLocation)
         self.userConfigPath = configLocation+"/keyboardcontrol"
         #override
-        self.userConfigPath = "/home/vaisakh/vaisakhRoot/programming/python/keyboardcontrol/config/"
+        #self.userConfigPath = "/home/vaisakh/vaisakhRoot/programming/python/keyboardcontrol/config/"
+        self.userConfigPath = "config/"
 
         self.currentConfigPath="";
         self.config = {}
