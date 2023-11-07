@@ -4,7 +4,9 @@ from PyQt6.QtCore import QStandardPaths, pyqtSignal
 from PyQt6.QtWidgets import QApplication, QHBoxLayout,QMainWindow, QWidget
 
 from AppMainUi import Ui_MainWindow
-from sidebar3 import ConfigTreeView
+from Sidebar import ConfigTreeView
+
+from Recording import Recording
 
 from EditWindow import EditPropertyWindow
 
@@ -18,7 +20,7 @@ class Config():
         self.userConfigPath = configLocation+"/keyboardcontrol"
         #override
         #self.userConfigPath = "/home/vaisakh/vaisakhRoot/programming/python/keyboardcontrol/config/"
-        self.userConfigPath = "config/"
+        self.userConfigPath = "../config/"
 
         self.currentConfigPath="";
         self.config = {}
@@ -89,8 +91,15 @@ class MainWindow(QMainWindow):
 
         self.ui.reset_button.clicked.connect(self.onResetButtonPressed)
         
+        rec =  Recording()
+
+        self.ui.stackedWidget.addWidget(rec)
+        self.ui.stackedWidget.setCurrentWidget(rec)
+
+
     def onSaveButtonPressed(self):
         configuration.saveConfig()
+
 
     def onResetButtonPressed(self):
         self.setBodyItem(configuration.currentConfigPath)
