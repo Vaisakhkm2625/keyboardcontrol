@@ -13,6 +13,7 @@ xremap = "^0.1.0"
 pyqt6-tools = "^6.4.2.3.3"
 keyboard = "^0.13.5"
 qt-material = "^2.14"
+pyqt6-plugins = {version = "^6.4.2.2.3", platform = "linux"}
 
 
 [build-system]
