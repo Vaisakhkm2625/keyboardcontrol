@@ -48,5 +48,5 @@ if __name__ == "__main__":
     platform = "hyprland"
     userConfigPath = "/home/vaisakh/vaisakhRoot/programming/python/keyboardcontrol/config/**/*.yml"
 
-    config_manager = ConfigurationManager(os, platform, userConfigPath)
+    config_manager = ConfigurationRunner(os, platform, userConfigPath)
     config_manager.run()
