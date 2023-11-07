@@ -26,7 +26,7 @@ class Config():
 
         self.os=sys.platform
         self.selectedOs=sys.platform
-        #self.platform="hyprland"
+        self.platform=sys.platform
         #self.selectedPlatform="hyprland"
         self.selectedPlatform="windows10"
 
