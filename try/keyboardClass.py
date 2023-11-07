@@ -46,7 +46,9 @@ class ConfigurationRunner:
 if __name__ == "__main__":
     os = "linux"
     platform = "hyprland"
-    userConfigPath = "/home/vaisakh/vaisakhRoot/programming/python/keyboardcontrol/config/**/*.yml"
+    #userConfigPath = "/home/vaisakh/vaisakhRoot/programming/python/keyboardcontrol/config/**/*.yml"
+    userConfigPath = "../config/**/*.yml"
+
 
     config_manager = ConfigurationRunner(os, platform, userConfigPath)
     config_manager.run()
