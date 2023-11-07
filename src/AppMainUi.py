@@ -12,7 +12,7 @@ from PyQt6 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(786, 641)
+        MainWindow.resize(786, 643)
         self.centralwidget = QtWidgets.QWidget(parent=MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.gridLayout = QtWidgets.QGridLayout(self.centralwidget)
@@ -20,6 +20,7 @@ class Ui_MainWindow(object):
         self.mainarea_widget = QtWidgets.QWidget(parent=self.centralwidget)
         self.mainarea_widget.setObjectName("mainarea_widget")
         self.gridLayout_2 = QtWidgets.QGridLayout(self.mainarea_widget)
+        self.gridLayout_2.setContentsMargins(0, 0, 0, 0)
         self.gridLayout_2.setObjectName("gridLayout_2")
         self.widget = QtWidgets.QWidget(parent=self.mainarea_widget)
         self.widget.setObjectName("widget")
@@ -118,6 +119,8 @@ class Ui_MainWindow(object):
         self.sidebar_widget = QtWidgets.QWidget(parent=self.centralwidget)
         self.sidebar_widget.setObjectName("sidebar_widget")
         self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.sidebar_widget)
+        self.verticalLayout_2.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_2.setSpacing(0)
         self.verticalLayout_2.setObjectName("verticalLayout_2")
         self.filetree_wrapper = QtWidgets.QWidget(parent=self.sidebar_widget)
         self.filetree_wrapper.setObjectName("filetree_wrapper")
@@ -142,7 +145,7 @@ class Ui_MainWindow(object):
         self.menubar.addAction(self.menuFile.menuAction())
 
         self.retranslateUi(MainWindow)
-        self.stackedWidget.setCurrentIndex(0)
+        self.stackedWidget.setCurrentIndex(2)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):

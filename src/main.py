@@ -8,6 +8,9 @@ from sidebar3 import ConfigTreeView
 
 from EditWindow import EditPropertyWindow
 
+from qt_material import apply_stylesheet
+
+
 class Config():
     def __init__(self):
 
@@ -48,6 +51,7 @@ class Application(QApplication):
     def __init__(self, argv):
         super().__init__(argv)
 
+        apply_stylesheet(self, theme='dark_teal.xml')
         self.window = MainWindow()
         self.window.show()
 

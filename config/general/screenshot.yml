@@ -1,5 +1,5 @@
 desc: Take Screen shots
-keybinding: Ctrl+I
+keybinding: Ctrl+A
 name: Screen shot
 supported_os:
   linux:

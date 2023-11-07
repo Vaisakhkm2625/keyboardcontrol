@@ -23,8 +23,7 @@ files = glob.glob(userConfigPath,recursive=True) # list of all .yaml files in a 
 def execute_command(shell_command):
     try:
         #returned = subprocess.run(shell_command, shell=True)
-        print("setting this")
-        returned_out = subprocess.check_output(shell_command,user="vaisakh", shell=True)
+        returned_out = subprocess.check_output(shell_command,shell=True)
         print(returned_out)
     except Exception as e:
         print(f"Error executing the command: {e}")
