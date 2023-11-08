@@ -1,5 +1,6 @@
 from io import open_code
 import sys,yaml
+import threading
 from PyQt6.QtCore import QStandardPaths, pyqtSignal
 from PyQt6.QtWidgets import QApplication, QHBoxLayout,QMainWindow, QWidget
 
@@ -113,7 +114,11 @@ class MainWindow(QMainWindow):
 
     def onApplyButtonPressed(self):
         self.keyboard.setup()
-        self.keyboard.run()
+
+        app_thread = threading.Thread(target=self.keyboard.run)
+        app_thread.start()
+
+
 
 
     def setBodyItem(self,filepath):
