@@ -75,7 +75,7 @@ class MainWindow(QMainWindow):
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
 
-        self.keyboard = KeyboardController(configuration.os,configuration.platform,configuration.userConfigPath)
+        self.keyboard = KeyboardController(configuration.userConfigPath,configuration.os,configuration.platform)
 
         self.setWindowTitle("keyboard")
 
