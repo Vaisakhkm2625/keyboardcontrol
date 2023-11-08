@@ -75,7 +75,7 @@
           <item>
            <widget class="QPushButton" name="apply_button">
             <property name="text">
-             <string>apply</string>
+             <string>Start</string>
             </property>
            </widget>
           </item>
@@ -84,8 +84,11 @@
        </item>
        <item row="1" column="0">
         <widget class="QStackedWidget" name="stackedWidget">
+         <property name="styleSheet">
+          <string notr="true">* {color : white; }</string>
+         </property>
          <property name="currentIndex">
-          <number>2</number>
+          <number>1</number>
          </property>
          <widget class="QWidget" name="welcome_page">
           <widget class="QLabel" name="label_4">

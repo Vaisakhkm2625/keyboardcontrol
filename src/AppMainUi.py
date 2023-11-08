@@ -42,6 +42,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout.addWidget(self.apply_button)
         self.gridLayout_2.addWidget(self.widget, 0, 0, 1, 1)
         self.stackedWidget = QtWidgets.QStackedWidget(parent=self.mainarea_widget)
+        self.stackedWidget.setStyleSheet("* {color : white; }")
         self.stackedWidget.setObjectName("stackedWidget")
         self.welcome_page = QtWidgets.QWidget()
         self.welcome_page.setObjectName("welcome_page")
@@ -145,7 +146,7 @@ class Ui_MainWindow(object):
         self.menubar.addAction(self.menuFile.menuAction())
 
         self.retranslateUi(MainWindow)
-        self.stackedWidget.setCurrentIndex(2)
+        self.stackedWidget.setCurrentIndex(1)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
@@ -153,7 +154,7 @@ class Ui_MainWindow(object):
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
         self.toggle_sidebar_button.setText(_translate("MainWindow", "x"))
         self.label_2.setText(_translate("MainWindow", "TextLabel"))
-        self.apply_button.setText(_translate("MainWindow", "apply"))
+        self.apply_button.setText(_translate("MainWindow", "Start"))
         self.label_4.setText(_translate("MainWindow", "Welcome"))
         self.reset_button.setText(_translate("MainWindow", "Reset"))
         self.edit_properties_button.setText(_translate("MainWindow", "Edit"))

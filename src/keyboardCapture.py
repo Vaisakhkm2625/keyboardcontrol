@@ -6,7 +6,7 @@ import keyboard
 
 class ConfigLoader:
     def __init__(self, config_path, os, platform):
-        self.config_path = config_path
+        self.config_path = config_path+"**/*.yml"
         self.os = os
         self.platform = platform
         self.data = []
