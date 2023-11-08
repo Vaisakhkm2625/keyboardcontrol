@@ -1,6 +1,7 @@
 desc: Take screen recording
 keybinding: Ctrl+S
 name: screen recording
+
 supported_os:
   linux:
     gnome:
@@ -12,8 +13,9 @@ supported_os:
       cmd: kitty -e"echo screen recording"
       dependency: ffmpeg
       script_path: ffmpeg
+
   win32:
     windows10:
-      cmd: powershell screenroctd
-      dependency: powershell
+      cmd: notepad
+      dependency: notepad
       script_path: ''

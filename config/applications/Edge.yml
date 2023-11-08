@@ -1,0 +1,28 @@
+desc: Open MS Edge
+keybinding: Ctrl+Shift+S
+name: Edge
+
+supported_os:
+  linux:
+
+    gnome:
+      cmd: edge
+      dependency: edge
+      script_path: ''
+
+    hyprland:
+      cmd: edge
+      dependency: edge
+      script_path: ''
+
+  win32:
+    windows10:
+      cmd: start msedge
+      dependency: edge
+      script_path: ''      
+
+    windows11:
+      cmd: start msedge
+      dependency: edge
+      script_path: ''
+

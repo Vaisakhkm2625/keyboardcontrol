@@ -1,0 +1,29 @@
+desc: Open MS Teams
+keybinding: Ctrl+Shift+S
+name: Teams
+
+supported_os:
+  linux:
+
+    gnome:
+      cmd: teams
+      dependency: teams
+      script_path: ''
+
+    hyprland:
+      cmd: teams
+      dependency: scrot
+      script_path: ''
+
+  win32:
+
+    windows10:
+      cmd: start msteams
+      dependency: teams
+      script_path: ''      
+
+    windows11:
+      cmd: start msteams
+      dependency: teams
+      script_path: ''
+

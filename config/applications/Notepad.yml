@@ -1,0 +1,29 @@
+desc: Open Notepad
+keybinding: Ctrl+Shift+S
+name: Notepad
+
+supported_os:
+  linux:
+
+    gnome:
+      cmd: notepad
+      dependency: notepad
+      script_path: ''
+
+    hyprland:
+      cmd: notepad
+      dependency: scrot
+      script_path: ''
+
+  win32:
+
+    windows10:
+      cmd: start notepad
+      dependency: notepad
+      script_path: ''      
+
+    windows11:
+      cmd: start notepad
+      dependency: notepad
+      script_path: ''
+
