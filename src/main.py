@@ -10,6 +10,8 @@ from Recording import Recording
 
 from EditWindow import EditPropertyWindow
 
+from keyboardCapture import KeyboardController
+
 from qt_material import apply_stylesheet
 
 
@@ -72,6 +74,8 @@ class MainWindow(QMainWindow):
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
 
+        self.keyboard = KeyboardController(configuration.os,configuration.platform,configuration.userConfigPath)
+
         self.setWindowTitle("keyboard")
 
         self.configTreeView = ConfigTreeView(configuration.userConfigPath)
@@ -90,7 +94,9 @@ class MainWindow(QMainWindow):
         self.ui.settings_button.clicked.connect(self.onSettingsButtonClicked)
 
         self.ui.reset_button.clicked.connect(self.onResetButtonPressed)
-        
+
+        self.ui.apply_button.clicked.connect(self.onApplyButtonPressed)
+
         rec =  Recording()
 
         self.ui.stackedWidget.addWidget(rec)
@@ -104,6 +110,12 @@ class MainWindow(QMainWindow):
     def onResetButtonPressed(self):
         self.setBodyItem(configuration.currentConfigPath)
 
+
+    def onApplyButtonPressed(self):
+        self.keyboard.setup()
+        self.keyboard.run()
+
+
     def setBodyItem(self,filepath):
         print("setBodyItem",filepath)
         configuration.setCurrentConfig(filepath)
@@ -115,6 +127,7 @@ class MainWindow(QMainWindow):
         print(configuration)
         print(configuration.config)
         self.setValuesUi()
+
 
 
     def editProperies(self):

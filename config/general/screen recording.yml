@@ -7,8 +7,9 @@ supported_os:
       cmd: ffmpeg
       dependency: ffmpeg
       script_path: ''
+
     hyprland:
-      cmd: echo screen recording
+      cmd: kitty -e"echo screen recording"
       dependency: ffmpeg
       script_path: ffmpeg
   win32:

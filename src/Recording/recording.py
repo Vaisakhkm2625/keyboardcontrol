@@ -11,3 +11,5 @@ class Recording(QWidget):
         self.ui.setupUi(self)
 
         #self.setWindowTitle("title")
+
+

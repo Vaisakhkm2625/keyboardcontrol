@@ -17,14 +17,13 @@ def read_yaml_file(filename):
 
 #configLocation = QStandardPaths.writableLocation(QStandardPaths.StandardLocation.ConfigLocation)
 #userConfigPath = configLocation+"/keyboardcontrol"
-userConfigPath = "/home/vaisakh/vaisakhRoot/programming/python/keyboardcontrol/config/**/*.yml"
+#userConfigPath = "/home/vaisakh/vaisakhRoot/programming/python/keyboardcontrol/config/**/*.yml"
+userConfigPath = "../config/**/*.yml"
 files = glob.glob(userConfigPath,recursive=True) # list of all .yaml files in a directory 
 
 def execute_command(shell_command):
     try:
-        #returned = subprocess.run(shell_command, shell=True)
-        returned_out = subprocess.check_output(shell_command,shell=True)
-        print(returned_out)
+        subprocess.Popen(shell_command.split(" "), shell=True)
     except Exception as e:
         print(f"Error executing the command: {e}")
 

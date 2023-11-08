@@ -44,36 +44,29 @@ class HotkeyHandler:
     def wait_for_exit(self):
         keyboard.wait('esc')
 
-class KeyboardController:
-    def __init__(self, config_path, os, platform):
-        self.config_loader = ConfigLoader(config_path, os, platform)
-        self.command_executor = CommandExecutor()
-        self.hotkey_handler = HotkeyHandler()
 
-    def setup(self):
-        self.config_loader.load_configs()
 
-        for config in self.config_loader.data:
-            hotkey = config["keybinding"]
-            desc = config["desc"]
-            cmd = config["supported_os"][self.config_loader.os][self.config_loader.platform]["cmd"]
-
-            def create_command_executor(cmd):
-                return lambda: self.command_executor.execute_command(cmd)
-
-            self.hotkey_handler.add_hotkey(hotkey, create_command_executor(cmd))
-
-    def run(self):
-        self.hotkey_handler.wait_for_exit()
-
-    def stop(self):
-            keyboard.unhook_all()
 
 if __name__ == "__main__":
     os = "linux"
     platform = "hyprland"
     userConfigPath = "../config/**/*.yml"
 
-    app = KeyboardController(userConfigPath, os, platform)
-    app.setup()
-    app.run()
+    config_loader = ConfigLoader(userConfigPath, os, platform)
+    config_loader.load_configs()
+
+    command_executor = CommandExecutor()
+
+    hotkey_handler = HotkeyHandler()
+
+    for config in config_loader.data:
+        hotkey = config["keybinding"]
+        desc = config["desc"]
+        cmd = config["supported_os"][os][platform]["cmd"]
+
+        def create_command_executor(cmd):
+            return lambda: command_executor.execute_command(cmd)
+
+        hotkey_handler.add_hotkey(hotkey, create_command_executor(cmd))
+
+    hotkey_handler.wait_for_exit()
